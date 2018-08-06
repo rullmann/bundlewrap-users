@@ -8,10 +8,19 @@ files = {}
 directories = {}
 
 for user, options in sorted(node.metadata.get('users', {}).items()):
-    users[user] = {
-        'uid': options.get('uid'),
-        'home': options.get('home'),
-    }
+    if options.get('groups', {}):
+        users[user] = {
+            'uid': options.get('uid'),
+            'home': options.get('home'),
+            'groups': [
+                "{}".format(options.get('groups', {}))
+            ]
+        }
+    else:
+        users[user] = {
+            'uid': options.get('uid'),
+            'home': options.get('home'),
+        }
 
     if node.has_bundle('openssh'):
         directories['{}/.ssh'.format(options.get('home'))] = {
