@@ -22,6 +22,12 @@ for user, options in sorted(node.metadata.get('users', {}).items()):
             'home': options.get('home'),
         }
 
+    directories['{}/.config'.format(options.get('home'))] = {
+        'mode': '0700',
+        'owner': user,
+        'group': user,
+    }
+
     if node.has_bundle('openssh'):
         directories['{}/.ssh'.format(options.get('home'))] = {
             'mode': '0700',
