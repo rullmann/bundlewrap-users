@@ -18,6 +18,7 @@ It also integrates with the `openssh` bundle to add ssh authorized keys.
                 'uid': "1234",
                 'home': "/home/someuser",
                 'groups': 'wheel\anothergroup', # optional, add users to one or more groups. Make sure groups are separated by '\n' 
+                'deploy_authorized_keys': True, # optional, toggles deployment of ssh authorized keys fot a user
             },
         },
     },

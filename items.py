@@ -28,7 +28,7 @@ for user, options in sorted(node.metadata.get('users', {}).items()):
         'group': user,
     }
 
-    if node.has_bundle('openssh'):
+    if node.has_bundle('openssh') and node.metadata.get('users', {}).get(user).get('deploy_authorized_keys'):
         directories['{}/.ssh'.format(options.get('home'))] = {
             'mode': '0700',
             'owner': user,
